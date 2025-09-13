@@ -1,0 +1,38 @@
+.nav-modern {
+    color: #000000b2;
+    font-weight: 600;
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-modern:hover {
+    color: #c51212;
+}
+
+svg {
+    color: #000000b2;
+}
+
+#brandLogo {
+    color: #fffb00;
+}
+
+#heroLogo {
+    color: #fbff00;
+}
+
+.carousel-item img {
+    height: 680px;
+    object-fit: cover;
+}
+
+#heroSection {
+    @media screen and (min-height: 1268px) {
+        padding-top: 100px;
+    }
+}
+
+#exploraDiv {
+    @media screen and (min-height: 1268px) {
+        padding-top: 249px;
+    }
+}
