@@ -110,12 +110,17 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>Total</span>
             <strong id="cartTotal">$0</strong>
           </p>
-          <button class="btn btn-success w-100 mt-3">
-            <!-- ICONO CHECK AQUÍ --> Pagar ahora
+          <button class="btn btn-success w-100 mt-3 d-inline-flex align-items-center justify-content-center">Pagar ahora<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle text-white ms-2" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                </svg>
           </button>
           <button id="clearCartButton"
             class="btn btn-outline-danger w-100 mt-2 d-inline-flex align-items-center gap-2 justify-content-center">
-            <!-- ICONO CESTA VACÍA AQUÍ --> Vaciar carrito
+            Vaciar carrito<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-x" viewBox="0 0 16 16">
+                    <path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793z"/>
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
+                    </svg>
           </button>
         </div>
       </div>
@@ -134,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cart.forEach(item => {
             const itemHTML = `
       <div class="card mb-3 shadow-sm border-0">
-        <div class="row g-0 align-items-center">
+        <div class="row g-0 align-items-center py-2">
           <!-- Imagen -->
           <div class="col-3 col-md-2 text-center">
             <img src="${item.imagen}" class="img-fluid cart-img" alt="${item.nombre}">
@@ -174,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ivaTotal = (subTotal * 0.19).toFixed(0);
 
         subTotalSpan.textContent = `$${subTotal.toLocaleString('es-CL')}`;
-        ivaSpan.textContent = `$${ivaTotal.toLocaleString('es-CL')}`;
+        ivaSpan.textContent = `$${Number(ivaTotal).toLocaleString('es-CL')}`;
         cartTotal = subTotal + Number(ivaTotal);
         cartTotalSpan.textContent = `$${cartTotal.toLocaleString('es-CL')}`;
 
