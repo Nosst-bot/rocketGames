@@ -43,3 +43,28 @@ svg {
     object-fit: cover;
     border-radius: 8px;
 }
+
+/* Botón rojo Rocket en TODOS los .btn-danger del sitio */
+.btn-danger {
+  background-color: #c51212 !important;
+  border-color: #c51212 !important;
+}
+.btn-danger:hover, .btn-danger:focus {
+  background-color: #a00e0e !important;
+  border-color: #a00e0e !important;
+}
+
+/* Borde/sombra al enfocar inputs */
+.form-control:focus, .form-select:focus {
+  border-color: #c51212;
+  box-shadow: 0 0 0 0.2rem rgba(197, 18, 18, 0.25);
+}
+
+/* Links estilo navbar del sitio (negro → rojo al hover) */
+a.nav-modern {
+  color: #000000b2;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color .2s ease-in-out;
+}
+a.nav-modern:hover { color: #c51212; }
