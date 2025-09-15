@@ -1,3 +1,5 @@
+import { addToCart } from "./cart.js";
+
 const products = [
     {
         id: 1,
@@ -7,6 +9,7 @@ const products = [
         imagen: "assets/Silksong_cover.webp",
         categoria: ["Acción", "Aventura", "Indie"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch"],
+        cantidad: 1,
     },
     {
         id: 2,
@@ -16,6 +19,7 @@ const products = [
         imagen: "assets/EldenRing_cover.jpg",
         categoria: ["Acción", "RPG", "Mundo Abierto"],
         plataforma: ["PC", "Playstation", "Xbox"],
+        cantidad: 1,
     },
     {
         id: 3,
@@ -25,6 +29,7 @@ const products = [
         imagen: "assets/Celeste_cover.png",
         categoria: ["Plataformas", "Indie", "Aventura"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch"],
+        cantidad: 1,
     },
     {
         id: 4,
@@ -34,6 +39,7 @@ const products = [
         imagen: "assets/BreathOfTheWild_cover.webp",
         categoria: ["Acción", "Aventura", "Mundo Abierto"],
         plataforma: ["Nintendo Switch", "Wii U"],
+        cantidad: 1,
     },
     {
         id: 5,
@@ -43,6 +49,7 @@ const products = [
         imagen: "assets/StardewValley_cover.png",
         categoria: ["Simulación", "Indie", "RPG"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch", "Móvil"],
+        cantidad: 1,
     },
     {
         id: 6,
@@ -52,6 +59,7 @@ const products = [
         imagen: "assets/GodOfWarRagnarok_cover.webp",
         categoria: ["Acción", "Aventura", "RPG"],
         plataforma: ["Playstation", "PC"],
+        cantidad: 1,
     },
     {
         id: 7,
@@ -61,6 +69,7 @@ const products = [
         imagen: "assets/Cuphead_cover.webp",
         categoria: ["Plataformas", "Acción", "Indie"],
         plataforma: ["PC", "Xbox", "Playstation", "Nintendo Switch"],
+        cantidad: 1,
     },
     {
         id: 8,
@@ -70,6 +79,7 @@ const products = [
         imagen: "assets/Undertale_cover.jpg",
         categoria: ["RPG", "Indie", "Aventura"],
         plataforma: ["PC", "Playstation", "Nintendo Switch"],
+        cantidad: 1,
     },
     {
         id: 9,
@@ -79,6 +89,7 @@ const products = [
         imagen: "assets/RDR2_cover.jpg",
         categoria: ["Acción", "Aventura", "Mundo Abierto"],
         plataforma: ["PC", "Playstation", "Xbox"],
+        cantidad: 1,
     },
     {
         id: 10,
@@ -88,6 +99,7 @@ const products = [
         imagen: "assets/Minecraft_cover.jpeg",
         categoria: ["Sandbox", "Supervivencia", "Creatividad"],
         plataforma: ["PC", "Consolas", "Móvil"],
+        cantidad: 1,
     },
     {
         id: 11,
@@ -97,6 +109,7 @@ const products = [
         imagen: "assets/Witcher3_cover.jpg",
         categoria: ["RPG", "Acción", "Aventura"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch"],
+        cantidad: 1,
     },
     {
         id: 12,
@@ -106,6 +119,7 @@ const products = [
         imagen: "assets/Hades_cover.jpg",
         categoria: ["Acción", "Roguelike", "Indie"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch"],
+        cantidad: 1,
     },
     {
         id: 13,
@@ -115,6 +129,7 @@ const products = [
         imagen: "assets/DarkSouls3_cover.jpg",
         categoria: ["Acción", "RPG", "Soulslike"],
         plataforma: ["PC", "Playstation", "Xbox"],
+        cantidad: 1,
     },
     {
         id: 14,
@@ -124,6 +139,7 @@ const products = [
         imagen: "assets/ACNH_cover.jpg",
         categoria: ["Simulación", "Social", "Creatividad"],
         plataforma: ["Nintendo Switch"],
+        cantidad: 1,
     },
     {
         id: 15,
@@ -133,6 +149,7 @@ const products = [
         imagen: "assets/Sekiro_cover.webp",
         categoria: ["Acción", "Aventura", "Soulslike"],
         plataforma: ["PC", "Playstation", "Xbox"],
+        cantidad: 1,
     },
     {
         id: 16,
@@ -142,6 +159,7 @@ const products = [
         imagen: "assets/MarioOdyssey_cover.jpg",
         categoria: ["Plataformas", "Aventura", "Familiar"],
         plataforma: ["Nintendo Switch"],
+        cantidad: 1,
     },
     {
         id: 17,
@@ -151,6 +169,7 @@ const products = [
         imagen: "assets/DeadCells_cover.jpg",
         categoria: ["Acción", "Plataformas", "Roguelike"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch"],
+        cantidad: 1,
     },
     {
         id: 18,
@@ -160,6 +179,7 @@ const products = [
         imagen: "assets/Cyberpunk2077_cover.jpg",
         categoria: ["RPG", "Acción", "Mundo Abierto"],
         plataforma: ["PC", "Playstation", "Xbox"],
+        cantidad: 1,
     },
     {
         id: 19,
@@ -169,6 +189,7 @@ const products = [
         imagen: "assets/Ori2_cover.jpg",
         categoria: ["Plataformas", "Aventura", "Indie"],
         plataforma: ["PC", "Xbox", "Nintendo Switch"],
+        cantidad: 1,
     },
     {
         id: 20,
@@ -178,8 +199,11 @@ const products = [
         imagen: "assets/Persona5R_cover.jpg",
         categoria: ["RPG", "JRPG", "Aventura"],
         plataforma: ["Playstation", "PC", "Xbox", "Nintendo Switch"],
+        cantidad: 1,
     }
 ];
+
+
 //Sciprt para cargar los productos dinámicamente a la home page
 const row = document.getElementById('productsRow');
 
@@ -221,6 +245,16 @@ products.forEach(p => {
   <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0"/>
 </svg>
 `;
+
+    const toastElement = document.getElementById('cartToast');
+    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastElement);
+    const toastProductName = document.getElementById('cartToastProductName');
+
+    button.addEventListener('click', () => {
+        addToCart(p);
+        toastProductName.textContent = p.nombre;
+        toastBootstrap.show();
+    });
 
     body.appendChild(title);
     body.appendChild(text);
