@@ -36,3 +36,10 @@ svg {
         padding-top: 249px;
     }
 }
+
+.cart-img {
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}

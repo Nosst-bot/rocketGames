@@ -4,7 +4,7 @@ const products = [
     {
         id: 1,
         nombre: "Hollow Knight: Silksong",
-        precio: "7.990",
+        precio: 7990,
         descripcion: "Secuela del aclamado Hollow Knight. Los jugadores controlan a Hornet en un reino desconocido lleno de desafíos y secretos.",
         imagen: "assets/Silksong_cover.webp",
         categoria: ["Acción", "Aventura", "Indie"],
@@ -14,7 +14,7 @@ const products = [
     {
         id: 2,
         nombre: "Elden Ring",
-        precio: "49.990",
+        precio: 49990,
         descripcion: "Un épico RPG de acción de mundo abierto de FromSoftware y George R.R. Martin, lleno de jefes desafiantes y misterios.",
         imagen: "assets/EldenRing_cover.jpg",
         categoria: ["Acción", "RPG", "Mundo Abierto"],
@@ -24,7 +24,7 @@ const products = [
     {
         id: 3,
         nombre: "Celeste",
-        precio: "5.990",
+        precio: 5990,
         descripcion: "Un desafiante juego indie de plataformas sobre la superación personal mientras escalas la montaña Celeste.",
         imagen: "assets/Celeste_cover.png",
         categoria: ["Plataformas", "Indie", "Aventura"],
@@ -34,7 +34,7 @@ const products = [
     {
         id: 4,
         nombre: "The Legend of Zelda: Breath of the Wild",
-        precio: "39.990",
+        precio: 39990,
         descripcion: "Explora libremente el vasto reino de Hyrule en esta innovadora entrega de la saga Zelda.",
         imagen: "assets/BreathOfTheWild_cover.webp",
         categoria: ["Acción", "Aventura", "Mundo Abierto"],
@@ -44,7 +44,7 @@ const products = [
     {
         id: 5,
         nombre: "Stardew Valley",
-        precio: "6.990",
+        precio: 6990,
         descripcion: "Simulador de granja y vida rural, donde puedes cultivar, criar animales, pescar y formar relaciones.",
         imagen: "assets/StardewValley_cover.png",
         categoria: ["Simulación", "Indie", "RPG"],
@@ -54,7 +54,7 @@ const products = [
     {
         id: 6,
         nombre: "God of War: Ragnarök",
-        precio: "59.990",
+        precio: 59990,
         descripcion: "Kratos y Atreus continúan su viaje en los Nueve Reinos enfrentándose a dioses nórdicos.",
         imagen: "assets/GodOfWarRagnarok_cover.webp",
         categoria: ["Acción", "Aventura", "RPG"],
@@ -64,7 +64,7 @@ const products = [
     {
         id: 7,
         nombre: "Cuphead",
-        precio: "9.990",
+        precio: 9990,
         descripcion: "Juego de plataformas y disparos con estética de dibujos animados de los años 30 y dificultad elevada.",
         imagen: "assets/Cuphead_cover.webp",
         categoria: ["Plataformas", "Acción", "Indie"],
@@ -74,7 +74,7 @@ const products = [
     {
         id: 8,
         nombre: "Undertale",
-        precio: "4.990",
+        precio: 4990,
         descripcion: "RPG indie único donde tus decisiones importan y puedes ser pacifista o agresivo.",
         imagen: "assets/Undertale_cover.jpg",
         categoria: ["RPG", "Indie", "Aventura"],
@@ -84,7 +84,7 @@ const products = [
     {
         id: 9,
         nombre: "Red Dead Redemption 2",
-        precio: "39.990",
+        precio: 39990,
         descripcion: "Un épico western de mundo abierto con una historia cinematográfica y detallado mundo vivo.",
         imagen: "assets/RDR2_cover.jpg",
         categoria: ["Acción", "Aventura", "Mundo Abierto"],
@@ -94,7 +94,7 @@ const products = [
     {
         id: 10,
         nombre: "Minecraft",
-        precio: "19.990",
+        precio: 19990,
         descripcion: "Juego de construcción y supervivencia en un mundo abierto hecho de bloques infinitos.",
         imagen: "assets/Minecraft_cover.jpeg",
         categoria: ["Sandbox", "Supervivencia", "Creatividad"],
@@ -104,7 +104,7 @@ const products = [
     {
         id: 11,
         nombre: "The Witcher 3: Wild Hunt",
-        precio: "29.990",
+        precio: 29990,
         descripcion: "Un RPG épico donde controlas a Geralt de Rivia en un vasto mundo lleno de monstruos y misiones.",
         imagen: "assets/Witcher3_cover.jpg",
         categoria: ["RPG", "Acción", "Aventura"],
@@ -114,7 +114,7 @@ const products = [
     {
         id: 12,
         nombre: "Hades",
-        precio: "12.990",
+        precio: 12990,
         descripcion: "Roguelike de acción donde juegas como Zagreus, hijo de Hades, tratando de escapar del inframundo.",
         imagen: "assets/Hades_cover.jpg",
         categoria: ["Acción", "Roguelike", "Indie"],
@@ -124,7 +124,7 @@ const products = [
     {
         id: 13,
         nombre: "Dark Souls III",
-        precio: "34.990",
+        precio: 34990,
         descripcion: "Un RPG desafiante con combates intensos, escenarios oscuros y jefes imponentes.",
         imagen: "assets/DarkSouls3_cover.jpg",
         categoria: ["Acción", "RPG", "Soulslike"],
@@ -134,7 +134,7 @@ const products = [
     {
         id: 14,
         nombre: "Animal Crossing: New Horizons",
-        precio: "34.990",
+        precio: 34990,
         descripcion: "Crea y personaliza tu isla en este relajante simulador social.",
         imagen: "assets/ACNH_cover.jpg",
         categoria: ["Simulación", "Social", "Creatividad"],
@@ -144,7 +144,7 @@ const products = [
     {
         id: 15,
         nombre: "Sekiro: Shadows Die Twice",
-        precio: "39.990",
+        precio: 39990,
         descripcion: "Juego de acción de FromSoftware ambientado en un Japón mítico con combates de samuráis.",
         imagen: "assets/Sekiro_cover.webp",
         categoria: ["Acción", "Aventura", "Soulslike"],
@@ -154,7 +154,7 @@ const products = [
     {
         id: 16,
         nombre: "Super Mario Odyssey",
-        precio: "34.990",
+        precio: 34990,
         descripcion: "Aventura de Mario en mundos coloridos usando su gorra mágica Cappy.",
         imagen: "assets/MarioOdyssey_cover.jpg",
         categoria: ["Plataformas", "Aventura", "Familiar"],
@@ -164,7 +164,7 @@ const products = [
     {
         id: 17,
         nombre: "Dead Cells",
-        precio: "9.990",
+        precio: 9990,
         descripcion: "Roguelike de acción y plataformas con combates fluidos y rejugabilidad infinita.",
         imagen: "assets/DeadCells_cover.jpg",
         categoria: ["Acción", "Plataformas", "Roguelike"],
@@ -174,7 +174,7 @@ const products = [
     {
         id: 18,
         nombre: "Cyberpunk 2077",
-        precio: "44.990",
+        precio: 44990,
         descripcion: "RPG de mundo abierto futurista ambientado en Night City, con narrativa profunda y exploración.",
         imagen: "assets/Cyberpunk2077_cover.jpg",
         categoria: ["RPG", "Acción", "Mundo Abierto"],
@@ -184,7 +184,7 @@ const products = [
     {
         id: 19,
         nombre: "Ori and the Will of the Wisps",
-        precio: "14.990",
+        precio: 14990,
         descripcion: "Hermoso juego de plataformas y aventura con una historia emotiva y animaciones fluidas.",
         imagen: "assets/Ori2_cover.jpg",
         categoria: ["Plataformas", "Aventura", "Indie"],
@@ -194,7 +194,7 @@ const products = [
     {
         id: 20,
         nombre: "Persona 5 Royal",
-        precio: "39.990",
+        precio: 39990,
         descripcion: "Un JRPG aclamado por su estilo artístico, personajes memorables y combates estratégicos.",
         imagen: "assets/Persona5R_cover.jpg",
         categoria: ["RPG", "JRPG", "Aventura"],
