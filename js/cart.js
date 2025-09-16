@@ -1,91 +1,91 @@
 export const cart = [];
 
 export function addToCart(item) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    let existingItem = cart.find(i => i.id === item.id);
-    if (existingItem) {
-        existingItem.cantidad += 1;
-    } else {
-        item.cantidad = 1;
-        cart.push(item);
-    }
+  let existingItem = cart.find(i => i.id === item.id);
+  if (existingItem) {
+    existingItem.cantidad += 1;
+  } else {
+    item.cantidad = 1;
+    cart.push(item);
+  }
 
-    localStorage.setItem('cart', JSON.stringify(cart));
+  localStorage.setItem('cart', JSON.stringify(cart));
 
-    updateCartCounter()
+  updateCartCounter()
 }
 
 export function addQuantity(itemId) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let item = cart.find(i => i.id === itemId);
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let item = cart.find(i => i.id === itemId);
 
-    if (item) {
-        item.cantidad += 1;
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCartCounter();
-        window.location.reload();
-    }
+  if (item) {
+    item.cantidad += 1;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCounter();
+    window.location.reload();
+  }
 }
 
 export function subtractQuantity(itemId) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    let item = cart.find(i => i.id === itemId);
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  let item = cart.find(i => i.id === itemId);
 
-    if (item) {
-        if (item.cantidad > 1) {
-            item.cantidad -= 1;
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCounter();
-            window.location.reload();
-        }
+  if (item) {
+    if (item.cantidad > 1) {
+      item.cantidad -= 1;
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartCounter();
+      window.location.reload();
     }
+  }
 }
 
 
 export function removeFromCart(itemId) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cart.length === 0) return;
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  if (cart.length === 0) return;
 
-    cart = cart.filter(item => item.id !== itemId);
-    localStorage.setItem('cart', JSON.stringify(cart));
+  cart = cart.filter(item => item.id !== itemId);
+  localStorage.setItem('cart', JSON.stringify(cart));
 
-    updateCartCounter();
-    window.location.reload();
+  updateCartCounter();
+  window.location.reload();
 }
 
 export function getCartCount() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    return cart.reduce((total, item) => total + item.cantidad, 0);
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  return cart.reduce((total, item) => total + item.cantidad, 0);
 }
 
 export function updateCartCounter() {
-    const cartCounter = document.getElementById('cartCounter');
-    if (cartCounter) {
-        cartCounter.textContent = getCartCount();
-    }
+  const cartCounter = document.getElementById('cartCounter');
+  if (cartCounter) {
+    cartCounter.textContent = getCartCount();
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    updateCartCounter();
+  updateCartCounter();
 
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-    const cartContainer = document.getElementById('cartContainer');
+  const cartContainer = document.getElementById('cartContainer');
 
-    if (!cartContainer) {
-        return;
-    }
+  if (!cartContainer) {
+    return;
+  }
 
-    if (cart.length === 0) {
-        cartContainer.innerHTML = `
+  if (cart.length === 0) {
+    cartContainer.innerHTML = `
         <div class="text-center py-5">
             <h4 class="text-muted fs-3">Tu carrito está vacío 🛒</h4>
             <p class="small">Agrega productos para continuar con tu compra</p>
         </div>
     `;
-    } else {
-        cartContainer.innerHTML = `
+  } else {
+    cartContainer.innerHTML = `
     <div class="row g-4 align-items-start">
       <!-- Productos -->
       <div class="col-md-8">
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span>Total</span>
             <strong id="cartTotal">$0</strong>
           </p>
-          <button class="btn btn-success w-100 mt-3 d-inline-flex align-items-center justify-content-center">Pagar ahora<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle text-white ms-2" viewBox="0 0 16 16">
+          <button class="btn btn-success w-100 mt-3 d-inline-flex align-items-center justify-content-center" id="pagarButton">Pagar ahora<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle text-white ms-2" viewBox="0 0 16 16">
                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                 <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
                 </svg>
@@ -127,17 +127,17 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   `;
 
-        const cartItems = document.getElementById("cartItems");
-        const ivaSpan = document.getElementById('ivaTotal');
-        const subTotalSpan = document.getElementById('subtotal');
-        const cartTotalSpan = document.getElementById('cartTotal');
+    const cartItems = document.getElementById("cartItems");
+    const ivaSpan = document.getElementById('ivaTotal');
+    const subTotalSpan = document.getElementById('subtotal');
+    const cartTotalSpan = document.getElementById('cartTotal');
 
-        let ivaTotal = 0;
-        let subTotal = 0;
-        let cartTotal = 0;
+    let ivaTotal = 0;
+    let subTotal = 0;
+    let cartTotal = 0;
 
-        cart.forEach(item => {
-            const itemHTML = `
+    cart.forEach(item => {
+      const itemHTML = `
       <div class="card mb-3 shadow-sm border-0">
         <div class="row g-0 align-items-center py-2">
           <!-- Imagen -->
@@ -171,60 +171,109 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       </div>
     `;
-            cartItems.innerHTML += itemHTML;
+      cartItems.innerHTML += itemHTML;
 
-            subTotal += item.precio * item.cantidad;
-        });
+      subTotal += item.precio * item.cantidad;
+    });
 
-        ivaTotal = (subTotal * 0.19).toFixed(0);
+    ivaTotal = (subTotal * 0.19).toFixed(0);
 
-        subTotalSpan.textContent = `$${subTotal.toLocaleString('es-CL')}`;
-        ivaSpan.textContent = `$${Number(ivaTotal).toLocaleString('es-CL')}`;
-        cartTotal = subTotal + Number(ivaTotal);
-        cartTotalSpan.textContent = `$${cartTotal.toLocaleString('es-CL')}`;
+    subTotalSpan.textContent = `$${subTotal.toLocaleString('es-CL')}`;
+    ivaSpan.textContent = `$${Number(ivaTotal).toLocaleString('es-CL')}`;
+    cartTotal = subTotal + Number(ivaTotal);
+    cartTotalSpan.textContent = `$${cartTotal.toLocaleString('es-CL')}`;
 
-    }
+  }
 
-    //Funcionlidades de los botones
-    const clearCartButton = document.getElementById('clearCartButton');
-    if (clearCartButton) {
-        clearCartButton.addEventListener('click', () => {
-            localStorage.removeItem('cart');
-            updateCartCounter();
-            location.reload();
-        });
-    }
+  //Funcionlidades de los botones
+  const clearCartButton = document.getElementById('clearCartButton');
+  if (clearCartButton) {
+    clearCartButton.addEventListener('click', () => {
+      localStorage.removeItem('cart');
+      updateCartCounter();
+      location.reload();
+    });
+  }
 
-    const removeButtons = document.querySelectorAll('.data-id');
-    removeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const itemId = parseInt(button.getAttribute('value'));
-            removeFromCart(itemId);
-        })
+  const removeButtons = document.querySelectorAll('.data-id');
+  removeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const itemId = parseInt(button.getAttribute('value'));
+      removeFromCart(itemId);
     })
+  })
 
-    const addButtons = document.querySelectorAll('.data-plus');
-    addButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const itemId = parseInt(button.getAttribute('value'));
-            addQuantity(itemId);
-        })
-    });
+  const addButtons = document.querySelectorAll('.data-plus');
+  addButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const itemId = parseInt(button.getAttribute('value'));
+      addQuantity(itemId);
+    })
+  });
 
-    const subtractButtons = document.querySelectorAll('.data-minus');
-    subtractButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const itemId = parseInt(button.getAttribute('value'));
-            subtractQuantity(itemId);
-        })
-    });
-});
+  const subtractButtons = document.querySelectorAll('.data-minus');
+  subtractButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const itemId = parseInt(button.getAttribute('value'));
+      subtractQuantity(itemId);
+    })
+  });
+
+  // Popup de pago
+  setTimeout(() => {
+    const payButton = document.getElementById('pagarButton');
+    if (payButton) {
+      payButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        localStorage.removeItem('cart');
+        updateCartCounter();
+        // Crear modal si no existe
+        let paymentModal = document.getElementById('paymentModal');
+        if (!paymentModal) {
+          paymentModal = document.createElement('div');
+          paymentModal.id = 'paymentModal';
+          paymentModal.className = 'modal fade';
+          paymentModal.tabIndex = -1;
+          paymentModal.innerHTML = `
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">¡Pago realizado!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Tu compra ha sido procesada y recibirás la información en tu correo electrónico.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Aceptar</button>
+                  </div>
+                </div>
+              </div>
+            `;
+          document.body.appendChild(paymentModal);
+        }
+        // Mostrar modal con Bootstrap
+        if (window.bootstrap && window.bootstrap.Modal) {
+          const modalInstance = new bootstrap.Modal(paymentModal);
+          modalInstance.show();
+          paymentModal.addEventListener('hidden.bs.modal', () => {
+            location.reload();
+          }, { once: true });
+        } else {
+          // Fallback simple si Bootstrap no está disponible
+          alert('¡Pago realizado! Tu compra ha sido procesada y recibirás la información en tu correo electrónico.');
+          location.reload();
+        }
+      });
+    }
+  }, 500);
 
 
-const cartActions = document.getElementById('cartActions');
-if (cartActions) {
+  const cartActions = document.getElementById('cartActions');
+  if (cartActions) {
     cartActions.style.display = 'flex';
     if (getCartCount() === 0) {
-        cartActions.style.display = 'none';
+      cartActions.style.display = 'none';
     }
-}
+  }
+})

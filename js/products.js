@@ -1,6 +1,4 @@
-import { addToCart } from "./cart.js";
-
-const products = [
+export const defaultProducts = [
     {
         id: 1,
         nombre: "Hollow Knight: Silksong",
@@ -10,6 +8,7 @@ const products = [
         categoria: ["Acción", "Aventura", "Indie"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch"],
         cantidad: 1,
+        stock: 25,
     },
     {
         id: 2,
@@ -20,6 +19,7 @@ const products = [
         categoria: ["Acción", "RPG", "Mundo Abierto"],
         plataforma: ["PC", "Playstation", "Xbox"],
         cantidad: 1,
+        stock: 12,
     },
     {
         id: 3,
@@ -30,6 +30,7 @@ const products = [
         categoria: ["Plataformas", "Indie", "Aventura"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch"],
         cantidad: 1,
+        stock: 30,
     },
     {
         id: 4,
@@ -40,6 +41,7 @@ const products = [
         categoria: ["Acción", "Aventura", "Mundo Abierto"],
         plataforma: ["Nintendo Switch", "Wii U"],
         cantidad: 1,
+        stock: 8,
     },
     {
         id: 5,
@@ -50,6 +52,7 @@ const products = [
         categoria: ["Simulación", "Indie", "RPG"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch", "Móvil"],
         cantidad: 1,
+        stock: 40,
     },
     {
         id: 6,
@@ -60,6 +63,7 @@ const products = [
         categoria: ["Acción", "Aventura", "RPG"],
         plataforma: ["Playstation", "PC"],
         cantidad: 1,
+        stock: 15,
     },
     {
         id: 7,
@@ -70,6 +74,7 @@ const products = [
         categoria: ["Plataformas", "Acción", "Indie"],
         plataforma: ["PC", "Xbox", "Playstation", "Nintendo Switch"],
         cantidad: 1,
+        stock: 22,
     },
     {
         id: 8,
@@ -80,6 +85,7 @@ const products = [
         categoria: ["RPG", "Indie", "Aventura"],
         plataforma: ["PC", "Playstation", "Nintendo Switch"],
         cantidad: 1,
+        stock: 18,
     },
     {
         id: 9,
@@ -90,6 +96,7 @@ const products = [
         categoria: ["Acción", "Aventura", "Mundo Abierto"],
         plataforma: ["PC", "Playstation", "Xbox"],
         cantidad: 1,
+        stock: 10,
     },
     {
         id: 10,
@@ -100,6 +107,7 @@ const products = [
         categoria: ["Sandbox", "Supervivencia", "Creatividad"],
         plataforma: ["PC", "Consolas", "Móvil"],
         cantidad: 1,
+        stock: 50,
     },
     {
         id: 11,
@@ -110,6 +118,7 @@ const products = [
         categoria: ["RPG", "Acción", "Aventura"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch"],
         cantidad: 1,
+        stock: 14,
     },
     {
         id: 12,
@@ -120,6 +129,7 @@ const products = [
         categoria: ["Acción", "Roguelike", "Indie"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch"],
         cantidad: 1,
+        stock: 28,
     },
     {
         id: 13,
@@ -130,6 +140,7 @@ const products = [
         categoria: ["Acción", "RPG", "Soulslike"],
         plataforma: ["PC", "Playstation", "Xbox"],
         cantidad: 1,
+        stock: 9,
     },
     {
         id: 14,
@@ -140,6 +151,7 @@ const products = [
         categoria: ["Simulación", "Social", "Creatividad"],
         plataforma: ["Nintendo Switch"],
         cantidad: 1,
+        stock: 17,
     },
     {
         id: 15,
@@ -150,6 +162,7 @@ const products = [
         categoria: ["Acción", "Aventura", "Soulslike"],
         plataforma: ["PC", "Playstation", "Xbox"],
         cantidad: 1,
+        stock: 11,
     },
     {
         id: 16,
@@ -160,6 +173,7 @@ const products = [
         categoria: ["Plataformas", "Aventura", "Familiar"],
         plataforma: ["Nintendo Switch"],
         cantidad: 1,
+        stock: 20,
     },
     {
         id: 17,
@@ -170,6 +184,7 @@ const products = [
         categoria: ["Acción", "Plataformas", "Roguelike"],
         plataforma: ["PC", "Playstation", "Xbox", "Nintendo Switch"],
         cantidad: 1,
+        stock: 25,
     },
     {
         id: 18,
@@ -180,6 +195,7 @@ const products = [
         categoria: ["RPG", "Acción", "Mundo Abierto"],
         plataforma: ["PC", "Playstation", "Xbox"],
         cantidad: 1,
+        stock: 13,
     },
     {
         id: 19,
@@ -190,6 +206,7 @@ const products = [
         categoria: ["Plataformas", "Aventura", "Indie"],
         plataforma: ["PC", "Xbox", "Nintendo Switch"],
         cantidad: 1,
+        stock: 19,
     },
     {
         id: 20,
@@ -200,68 +217,18 @@ const products = [
         categoria: ["RPG", "JRPG", "Aventura"],
         plataforma: ["Playstation", "PC", "Xbox", "Nintendo Switch"],
         cantidad: 1,
+        stock: 16,
     }
 ];
 
+export function getProducts() {
+    const saved = localStorage.getItem("products");
+    return saved ? JSON.parse(saved) : defaultProducts;
+}
 
-//Sciprt para cargar los productos dinámicamente a la home page
-const row = document.getElementById('productsRow');
+export function saveProducts(products) {
+    localStorage.setItem("products", JSON.stringify(products));
 
-products.forEach(p => {
-    const col = document.createElement("div");
-    col.className = "col";
-
-    const card = document.createElement("div");
-    card.className = "card";
-
-    const img = document.createElement("img");
-    img.src = p.imagen;
-    img.className = "card-img-top";
-    img.alt = p.nombre;
-    img.style.height = "530px";
-    img.style.objectFit = "cover";
-
-    const body = document.createElement("div");
-    body.className = "card-body";
-
-    const title = document.createElement("h5");
-    title.className = "card-title";
-    title.textContent = p.nombre;
-
-    const text = document.createElement("p");
-    text.className = "card-text";
-    text.textContent = `${p.descripcion}`;
-
-    const textPrecio = document.createElement("span");
-    textPrecio.className = "badge bg-danger fs-5 mb-2";
-    textPrecio.textContent = `$${p.precio} CLP`;
-
-    const button = document.createElement("button");
-    button.className = "btn w-100 text-white d-flex justify-content-center align-items-center gap-2";
-    button.style.backgroundColor = "#171321";
-    button.innerHTML = `
-  <span>Agregar al carrito</span>
-<svg class="ms-1" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" class="bi bi-cart-plus-fill" viewBox="0 0 16 16">
-  <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0M9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0"/>
-</svg>
-`;
-
-    const toastElement = document.getElementById('cartToast');
-    const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastElement);
-    const toastProductName = document.getElementById('cartToastProductName');
-
-    button.addEventListener('click', () => {
-        addToCart(p);
-        toastProductName.textContent = p.nombre;
-        toastBootstrap.show();
-    });
-
-    body.appendChild(title);
-    body.appendChild(text);
-    body.appendChild(textPrecio);
-    body.appendChild(button);
-    card.appendChild(img);
-    card.appendChild(body);
-    col.appendChild(card);
-    row.appendChild(col);
-});
+    //Para borrar el carrito al actualizar los productos
+    localStorage.removeItem("cart");
+}

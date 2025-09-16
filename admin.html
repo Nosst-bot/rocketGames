@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rocket Games - Carrito</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.png">
+    <title>Panel Administrador - Rocket Games</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg fs-5 bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg fs-5 bg-white sticky-top shadow-sm">
         <div class="container px-4">
             <a class="navbar-brand d-flex align-items-center text-white fw-bold" href="index.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" id="brandLogo"
@@ -79,7 +79,7 @@
                 <!-- Iconos derecha -->
                 <ul class="navbar-nav d-flex flex-row gap-3">
                     <li class="nav-item">
-                        <a class="nav-link text-white position-relative p-3 rounded-circle" href="#">
+                        <a class="nav-link text-white position-relative p-3 rounded-circle" href="cart.html">
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
                                 class="bi bi-cart-fill" viewBox="0 1 16 16">
                                 <path
@@ -102,18 +102,98 @@
             </div>
         </div>
     </nav>
-
-    <section class="container-fluid">
-        <div class="container my-5" id="cartContainer">
-            <div class="row g-4 align-items-start">
-                <div class="col-md-8">
-                    <h2 class="mb-4">Carrito de compras</h2>
-                    <div id="cartItems">
-
-                    </div>
+    <section class="container-fluid pt-4">
+        <div class="container-lg">
+            <div class="d-flex justify-content-between">
+                <h1>Panel de administrador</h1>
+                <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                    data-bs-target="#addProductModal">Agregar producto</button>
+            </div>
+            <table class="table table-hover" id="adminTable">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="modal" tabindex="-1" id="addProductModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="addProductForm">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Agregar producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="addNombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="addNombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="addPrecio" class="form-label">Precio</label>
+                                <input type="number" class="form-control" id="addPrecio" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="addStock" class="form-label">Stock</label>
+                                <input type="number" class="form-control" id="addStock" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="addImagen" class="form-label">Ruta de imagen</label>
+                                <input type="text" class="form-control" id="addImagen"
+                                    placeholder="assets/nombreimagen.ext" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </div>
+        <!-- Modal Editar Producto -->
+        <div class="modal" tabindex="-1" id="editProductModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="editProductForm">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editar producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input type="hidden" id="editId">
+                            <div class="mb-3">
+                                <label for="editNombre" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" id="editNombre" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editPrecio" class="form-label">Precio</label>
+                                <input type="number" class="form-control" id="editPrecio" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editStock" class="form-label">Stock</label>
+                                <input type="number" class="form-control" id="editStock" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="editImagen" class="form-label">Ruta de imagen</label>
+                                <input type="text" class="form-control" id="editImagen" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
+    <script src="js/admin.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
